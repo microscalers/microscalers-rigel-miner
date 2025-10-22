@@ -1,0 +1,13 @@
+[Unit]
+Description=Rigel Miner RVN
+After=network.target
+
+[Service]
+WorkingDirectory=/home/mineai/rigel-rvn/rigel-1.22.3-linux
+ExecStart=/home/mineai/rigel-rvn/rigel-1.22.3-linux/start_rvn.sh
+Restart=always
+User=mineai
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
