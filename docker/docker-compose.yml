@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  miner:
+    image: microscalers/rigel-miner:latest
+    build: .
+    container_name: rigel-miner
+    environment:
+      - GPU_ID=0
+      - POOL=stratum+tcp://rvn.2miners.com:6060
+      - WALLET=RKPyKUJ8gGmRSDAt7ueNkmdAPF12vjuALT
+      - WORKER=microscalers
+      - POWER_LIMIT=475
+    deploy:
+      restart_policy:
+        condition: always
+    runtime: nvidia
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia0
+    volumes:
+      - ./logs:/opt/rigel/logs
